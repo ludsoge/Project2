@@ -17,6 +17,19 @@ for i = 1:numel(xs)
     end
 end
 
-% plot
-plot(xs, ys, '.'); axis equal
-xlabel('x'); ylabel('y'); title('Boundary points');
+% --- background ---
+xGrid = linspace(-2, 1, 600);
+yGrid = linspace(-1.5, 1.5, 600);
+[X, Y] = meshgrid(xGrid, yGrid);
+
+% fractal() for every point
+frac = arrayfun(@(xr, yi) fractal(xr + 1i*yi), X, Y);
+
+figure;
+imshow(frac, [0, 100], 'XData', [min(xGrid) max(xGrid)], ...
+       'YData', [min(yGrid) max(yGrid)]);
+set(gca,'YDir','normal'); colormap(hot); axis on; axis equal;
+title('Mandelbrot with boundary'); xlabel('Re(c)'); ylabel('Im(c)');
+hold on;
+plot(xs, ys, 'c.', 'MarkerSize', 5);
+
