@@ -1,4 +1,4 @@
-% choose the same x-range used for fitting (stay inside)
+% choose the same x-range used for fitting
 p = 15;
 s = -2.0;   % left bound on x  (fitting xmin)
 e =  0.5;   % right bound on x (fitting xmax)
